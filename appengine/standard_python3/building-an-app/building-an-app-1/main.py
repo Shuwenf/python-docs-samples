@@ -32,7 +32,7 @@ def root():
 
     return render_template('index.html', times=dummy_times)
 
-@app.route('/')
+@app.route('/instruction') 
 def getInstruction():
     instruction_text = "Goal: eat a lot of apples!\nYou get longer when you eat apples."
     return render_template('instruction.html', instruction=instruction_text)
