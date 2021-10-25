@@ -32,7 +32,10 @@ def root():
 
     return render_template('index.html', times=dummy_times)
 
-
+@app.route('/')
+def getInstruction():
+    instruction_text = "Goal: eat a lot of apples!\nYou get longer when you eat apples."
+    return render_template('instruction.html', instruction=instruction_text)
 if __name__ == '__main__':
     # This is used when running locally only. When deploying to Google App
     # Engine, a webserver process such as Gunicorn will serve the app. This
