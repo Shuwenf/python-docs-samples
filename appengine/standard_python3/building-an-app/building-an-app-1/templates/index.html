@@ -38,13 +38,19 @@
    <div>
     Score :<span id="score">0</span>
    </div>
-   <button onclick="getRank()">My Rank?</button>
+   <button onclick="getRank( {{ your_score }} )">My Rank?</button>
    <button onclick="getInstruction()">Instruction</button>
    
  </div>
  <canvas id="main"></canvas>
  <script type= "text/javascript" src = "{{ url_for('static', filename='snake.js') }}"></script>
-</body>
+ <script>
+  function getRank(your_score) {
+     var uri = "/rank/?score=" + your_score
+     window.location.replace(uri);
+  }
+ </script>
+ </body>
  
 <style>
     body {
