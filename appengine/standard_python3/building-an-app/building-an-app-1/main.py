@@ -16,10 +16,10 @@
 # [START gae_python3_render_template]
 import datetime
 
-from flask import Flask, render_template
+from flask import Flask, render_template, request
 
 app = Flask(__name__)
-
+database_scores = [2660, 1230, 810, 533, 422, 420]
 
 @app.route('/')
 def root():
@@ -45,5 +45,25 @@ if __name__ == '__main__':
     # http://flask.pocoo.org/docs/1.0/quickstart/#static-files. Once deployed,
     # App Engine itself will serve those files as configured in app.yaml.
     app.run(host='127.0.0.1', port=8080, debug=True)
+    
+
+@app.route('/rank')
+def getRank():
+    score = requests.args.get('score')
+    found = False
+    for i, num in enumerate(database_scores):
+        if score <= num:
+            continue 
+        found = True
+        rank = i + 1
+        database_scores.insert(i, score) 
+        break 
+            
+    if not found:
+        database_scores.append(score)
+        rank = len(database_scores)
+    return render_template('rank.html', user_rank=rank, all_scores = database_scores)
+        
+        
 # [END gae_python3_render_template]
 # [END gae_python38_render_template]
