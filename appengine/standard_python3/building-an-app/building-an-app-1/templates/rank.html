@@ -1,0 +1,17 @@
+<html>
+<head>
+  <title>Leaderboard</title>
+  <link type="text/css" rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  <h1>YOUR RANK IS: {{ user_rank }}</h1>
+  
+  <h2>Leaderboard</h2>
+  {% for score in database_scores[:10] %}
+      <b> rank {{ i }} - score: {{ score }} </b> 
+      {% i++ %}
+  {% endfor %}
+
+</body>
+</html>
