@@ -16,7 +16,7 @@ function getInstruction() {
 
 function getRank() {
   let score = document.getElementById("score").innerHTML
-  location.replace("/rank/?score=" + score)
+  location.replace("/rank?/score=" + score)
 }
 
 function coll(t, e) {
