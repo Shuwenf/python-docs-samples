@@ -49,7 +49,7 @@ if __name__ == '__main__':
 
 @app.route('/rank')
 def getRank():
-    score = requests.args.get('score')
+    score = int(requests.args.get('score'))
     found = False
     for i, num in enumerate(database_scores):
         if score <= num:
